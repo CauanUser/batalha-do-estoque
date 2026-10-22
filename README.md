@@ -1,23 +1,29 @@
 # Batalha do Estoque
 
-Quiz de logística e controle de estoque com 15 perguntas, painel de apresentador e participante, cronômetro de 15 segundos e ranking.
+Quiz web responsivo de logística e controle de estoque, com 15 perguntas, painel de apresentador, cronômetro de 15 segundos e ranking demonstrativo.
 
-## Gerar APK Android de teste
-1. Abra a aba **Actions** deste repositório.
-2. Selecione **Build Android APK**.
-3. Clique em **Run workflow** e confirme.
-4. Quando a execução terminar com sucesso, abra-a e baixe o artefato **batalha-do-estoque-debug-apk**.
-5. Extraia o ZIP no Android e instale o APK. Talvez seja necessário autorizar a instalação pelo navegador ou gerenciador de arquivos.
+## Versão web
+O projeto está preparado para publicação gratuita no GitHub Pages.
 
-O workflow também roda automaticamente quando arquivos principais são alterados.
+1. Abra **Settings → Pages** no repositório.
+2. Em **Build and deployment → Source**, selecione **GitHub Actions**.
+3. Abra a aba **Actions** e execute **Deploy web version to GitHub Pages** (ou aguarde o workflow automático após um push).
+4. Quando concluir, abra o endereço publicado indicado na execução do workflow.
 
-## Estado atual
-- Primeira interface e as 15 perguntas do quiz adicionadas.
-- Fluxo de demonstração local para apresentador e participante.
-- Pipeline de compilação de APK de teste incluído.
-- **Multiplayer entre celulares ainda não está conectado**: o app atual guarda participantes apenas na memória do aparelho.
-- QR Code real, sincronização de sala, cronômetro compartilhado e ranking em tempo real ainda precisam de integração com Supabase.
-- `supabase.sql` é uma estrutura inicial, não uma integração pronta. As políticas permissivas são inseguras para produção e devem ser substituídas antes de abrir publicamente.
+Repositório: https://github.com/CauanUser/batalha-do-estoque
 
-## Próxima etapa
-Criar um projeto Supabase, aplicar e revisar o SQL, e então integrar Realtime e regras seguras de apresentador/participante. Use apenas a chave pública `anon` no cliente; nunca coloque a chave `service_role` no app.
+## Importante sobre o estado atual
+- A interface web e o quiz demonstrativo funcionam no navegador.
+- O modo atual ainda não sincroniza jogadores entre aparelhos diferentes.
+- O QR Code/link de entrada compartilhado e o multiplayer real dependem da integração com Supabase.
+- O arquivo `supabase.sql` é um protótipo e suas políticas permissivas não devem ser usadas em produção pública sem revisão de segurança.
+- Não coloque chaves secretas nem a chave `service_role` no código do site.
+
+## Ativar multiplayer
+1. Criar um projeto Supabase.
+2. Executar o SQL de estrutura no SQL Editor, depois revisar as políticas de acesso.
+3. Conectar a URL do projeto e a chave pública anon no frontend.
+4. Implementar e testar sincronização de salas, jogadores, respostas e cronômetro.
+
+## APK Android de teste
+O workflow **Build Android APK** também gera um APK de demonstração. O APK não adiciona multiplayer por si só.
